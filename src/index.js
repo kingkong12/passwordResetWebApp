@@ -8,8 +8,6 @@ import GlobalStyles from 'globalStyles'
 import theme from 'theme'
 import configureStore, { makeHistory } from 'store'
 import * as serviceWorker from 'serviceWorker'
-import Dashboard from 'ui/templates/Dashboard'
-import Details from 'ui/templates/Details'
 
 const store = configureStore()
 
@@ -22,8 +20,8 @@ const App = () => (
         {/* this is a good place to have fixed footers/heasders */}
         <Switch>
           {/* Renders the first child <Route> or <Redirect> that matches the location. */}
-          <Route exact path="/" render={() => <Dashboard />} />
-          <Route path="/details" render={() => <Details />} />
+          <Route exact path="/" render={() => <div>Hit </div>} />
+          <Route path="/details" render={() => <div> Miss</div>} />
         </Switch>
       </ConnectedRouter>
     </Provider>
