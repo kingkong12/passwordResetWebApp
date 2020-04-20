@@ -1,31 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ThemeProvider } from 'styled-components'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
-import GlobalStyles from 'globalStyles'
-import theme from 'theme'
 import configureStore, { makeHistory } from 'store'
 import * as serviceWorker from 'serviceWorker'
 
 const store = configureStore()
 
 const App = () => (
-  <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <ConnectedRouter history={makeHistory}>
-        {/* place ConnectedRouter under Provider */}
-        <GlobalStyles />
-        {/* this is a good place to have fixed footers/heasders */}
-        <Switch>
-          {/* Renders the first child <Route> or <Redirect> that matches the location. */}
-          <Route exact path="/" render={() => <div>Hit </div>} />
-          <Route path="/details" render={() => <div> Miss</div>} />
-        </Switch>
-      </ConnectedRouter>
-    </Provider>
-  </ThemeProvider>
+  <Provider store={store}>
+    <ConnectedRouter history={makeHistory}>
+      {/* place ConnectedRouter under Provider */}
+
+      {/* this is a good place to have fixed footers/heasders */}
+      <Switch>
+        {/* Renders the first child <Route> or <Redirect> that matches the location. */}
+        <Route exact path="/" render={() => <div>Hit </div>} />
+        <Route path="/details" render={() => <div> Miss</div>} />
+      </Switch>
+    </ConnectedRouter>
+  </Provider>
 )
 
 const root = document.getElementById('root')
