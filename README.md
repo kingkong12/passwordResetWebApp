@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Read md docs
+
+    add something about apssword validation
+
+
 ## Running on Localhost
 
 npm start
@@ -9,8 +14,6 @@ npm start
 following were the pixeles selected to make App responsive :440px,768px, 320px.
 
 ## API used in project
-
-https://itunes.apple.com/search?term=coldplay
 
 ### HTTP Requests
 
