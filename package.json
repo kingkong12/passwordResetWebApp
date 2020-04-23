@@ -15,6 +15,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "final-form": "^4.19.1",
     "history": "^4.10.1",
+    "json-server": "^0.16.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-final-form": "^6.4.0",
@@ -25,12 +26,13 @@
     "redux": "^4.0.5"
   },
   "scripts": {
-    "st": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "eslint-check": "eslint --print-config .eslintrc.json | eslint-config-prettier-check",
-    "flow": "flow"
+    "flow": "flow",
+    "server": "json-server --watch -p 4000 db.json"
   },
   "eslintConfig": {
     "extends": "react-app"

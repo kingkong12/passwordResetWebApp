@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { Grid, withStyles, Paper } from '@material-ui/core'
 import ResetFormCMS from 'ui/organisms/resetCMS'
+import axios from 'axios'
+import updateUserList from 'actions'
+import { connect } from 'react-redux'
+import basceApiUrl from '../../services/api'
 
 const styles = (theme) => ({
   root: {
@@ -24,7 +28,20 @@ const styles = (theme) => ({
 })
 
 class ResetPassword extends Component {
-  compoentDidMount() {}
+  componentDidMount() {
+    const { addUsersToRedux } = this.props
+    axios
+      .get(`${basceApiUrl}/users`)
+      .then((response) => {
+        addUsersToRedux(response.data)
+        // console.log('response ', response.data)
+        // ToDO : dispacth action and updat redux
+      })
+      .catch((error) => {
+        // ToDO :dispatch action to display error
+        console.log('Network Error', error)
+      })
+  }
 
   render() {
     const { classes } = this.props
@@ -46,4 +63,10 @@ class ResetPassword extends Component {
   }
 }
 
-export default withStyles(styles)(ResetPassword)
+const mapStateToProps = (state) => {
+  return { users: state.userList }
+}
+
+export default connect(mapStateToProps, { addUsersToRedux: updateUserList })(
+  withStyles(styles)(ResetPassword)
+)
