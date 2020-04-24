@@ -4,7 +4,10 @@
       "id": 1,
       "email": "abc@gmail.com",
       "password": "abc#123abc",
-      "previousPassword": ["jhonDoe@12", "iLoveMusic123@"]
+      "previousPassword": [
+        "jhonDoe@12",
+        "iLoveMusic123@"
+      ]
     },
     {
       "id": 2,
@@ -13,17 +16,15 @@
       "previousPassword": []
     },
     {
-      "id": 3,
       "email": "ghi@gmail.com",
-      "password": "abc#123abc",
+      "password": "abc#123abcrat",
       "previousPassword": [
+        "abc#123abc",
         "jhonnyDoe@12",
         "iLoveDancing123@",
-        "king@12ud",
-        "iLoveDancing456@",
-        "iLoveDancing789@",
-        "iLoveDancing0123@"
-      ]
+        "king@12ud"
+      ],
+      "id": 3
     }
   ]
 }

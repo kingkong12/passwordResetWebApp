@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Button } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Form, Field } from 'react-final-form'
 import { maxCharPassword } from 'const/ElementsFixedValue'
@@ -21,7 +21,7 @@ const styles = makeStyles((theme) => ({
   }
 }))
 
-const ResetFormCMS = (props) => {
+const ResetFormCMS = ({ handelSubmit, submissionError, ...props }) => {
   const classes = styles(props)
 
   const renderformFields = [
@@ -32,25 +32,22 @@ const ResetFormCMS = (props) => {
       autoComplete: 'email'
     },
     {
-      name: 'password',
-      id: 'password',
-      label: 'Password',
-      autoComplete: 'password',
+      name: 'newPassword',
+      id: 'newPassword',
+      label: 'newPassword',
+      autoComplete: 'newPassword',
       type: 'password',
       maxLength: maxCharPassword
     }
   ]
 
   return (
-    <div className={classes.formConatiner}>
-      <Typography component="h1" variant="h5" align="center">
-        Reset Your password
-      </Typography>
+    <>
       <Form
-        onSubmit={() => {}}
+        onSubmit={handelSubmit}
         initialValues={{
-          email: '',
-          password: ''
+          email: 'ghi@gmail.com',
+          newPassword: 'abc#123abc'
         }}
         validate={(values) => {
           const testEmail = /\S+@\S+\.\S+/
@@ -63,25 +60,25 @@ const ResetFormCMS = (props) => {
           } else if (!testEmail.test(values.email)) {
             errors.email = 'Invaild Email Id'
           }
-          if (!values.password) {
-            errors.password = 'Password is Required'
-          } else if (values.password.length < 8) {
-            errors.password = 'Length of password should be between 8 - 16'
-          } else if (values.password === values.email) {
-            errors.password = 'Password cannot be same as Email'
-          } else if (whiteSpaceRegex.test(values.password)) {
-            errors.password = 'No white space'
-          } else if (!testDigits.test(values.password)) {
-            errors.password = 'Should consist of atleast one digit'
-          } else if (!specialChar.test(values.password)) {
-            errors.password = 'SHould have one specila character'
+          if (!values.newPassword) {
+            errors.newPassword = 'Password is Required'
+          } else if (values.newPassword.length < 8) {
+            errors.newPassword =
+              'Length of newPassword should be between 8 - 16'
+          } else if (values.newPassword === values.email) {
+            errors.newPassword = 'Password cannot be same as Email'
+          } else if (whiteSpaceRegex.test(values.newPassword)) {
+            errors.newPassword = 'No white space'
+          } else if (!testDigits.test(values.newPassword)) {
+            errors.newPassword = 'Should consist of atleast one digit'
+          } else if (!specialChar.test(values.newPassword)) {
+            errors.newPassword = 'SHould have one specila character'
           }
 
           return errors
         }}
         render={({ handleSubmit, ...props }) => (
           <form onSubmit={handleSubmit}>
-            {/* {console.log('form props', props)} */}
             {renderformFields.map((item) => (
               <Field
                 {...item}
@@ -106,7 +103,7 @@ const ResetFormCMS = (props) => {
           </form>
         )}
       />
-    </div>
+    </>
   )
 }
 

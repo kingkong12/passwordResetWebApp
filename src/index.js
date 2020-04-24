@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router'
 import configureStore, { makeHistory } from 'store'
 import * as serviceWorker from 'serviceWorker'
 import ResetPassword from 'ui/container/resetPassword'
+import { FORM_ERROR } from 'final-form'
 
 const store = configureStore()
 
