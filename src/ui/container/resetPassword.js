@@ -8,6 +8,24 @@ import { connect } from 'react-redux'
 import basceApiUrl from '../../services/api'
 import { push } from 'connected-react-router'
 import { Typography } from '@material-ui/core'
+import { maxCharPassword } from 'const/ElementsFixedValue'
+
+const formFields = [
+  {
+    name: 'email',
+    id: 'email',
+    label: 'Email Id',
+    autoComplete: 'email'
+  },
+  {
+    name: 'newPassword',
+    id: 'newPassword',
+    label: 'New Password',
+    autoComplete: 'newPassword',
+    type: 'password',
+    maxLength: maxCharPassword
+  }
+]
 
 const styles = (theme) => ({
   root: {
@@ -41,7 +59,7 @@ const styles = (theme) => ({
     marginTop: '1rem',
     backgroundColor: '#FFCCBA',
     padding: '5px',
-    width: '100%',
+
     '& > * + *': {
       marginTop: theme.spacing(2)
     }
@@ -93,7 +111,6 @@ class ResetPassword extends Component {
           error: 'newPassword cannot be same as last 5 password'
         })
       } else {
-        // 1. currest password and push it in to password store
         let { previousPassword } = foundUser
         previousPassword.unshift(foundUser.password)
         let updatedUserPassword = {
@@ -101,7 +118,7 @@ class ResetPassword extends Component {
           password: newPassword,
           previousPassword: _.head(_.chunk(previousPassword, 4))
         }
-        //delete updatedUserPassword.id
+
         axios
           .put(`${basceApiUrl}/users/${updatedUserPassword.id}`, {
             email: updatedUserPassword.email,
@@ -143,7 +160,7 @@ class ResetPassword extends Component {
             )}
             <ResetFormCMS
               handelSubmit={this.handelFormSubmit}
-              // submissionError={this.state.error}
+              renderformFields={formFields}
             />
           </div>
         </Grid>

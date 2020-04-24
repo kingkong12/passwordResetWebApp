@@ -1,9 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## reset validadtion rules
+
+add validation rules from quetion
+
 ## Read md docs
 
     add something about apssword validation
-
 
 ## Running on Localhost
 
