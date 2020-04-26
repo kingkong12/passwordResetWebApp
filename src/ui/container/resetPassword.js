@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, withStyles, Paper } from '@material-ui/core'
+import propTypes from 'prop-types'
 import ResetFormCMS from 'ui/organisms/resetCMS'
 import axios from 'axios'
 import _ from 'lodash'
@@ -168,6 +169,11 @@ class ResetPassword extends Component {
       </Grid>
     )
   }
+}
+ResetPassword.propTypes = {
+  error: propTypes.string,
+  push: propTypes.func.isRequired,
+  addUsersToRedux: propTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {

@@ -1,4 +1,5 @@
 import React from 'react'
+import propTypes from 'prop-types'
 import { Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Form, Field } from 'react-final-form'
@@ -72,5 +73,9 @@ const ResetFormCMS = ({
     </>
   )
 }
-
+ResetFormCMS.propTypes = {
+  handelSubmit: propTypes.func.isRequired,
+  renderformFields: propTypes.instanceOf(Array),
+  submissionError: propTypes.string
+}
 export default ResetFormCMS
