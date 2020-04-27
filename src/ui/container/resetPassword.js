@@ -10,7 +10,8 @@ import basceApiUrl from '../../services/api'
 import { push } from 'connected-react-router'
 import { Typography } from '@material-ui/core'
 import { maxCharPassword } from 'const/ElementsFixedValue'
-
+import StyledLinearProgress from 'ui/atoms/LineProgress'
+import LinearProgress from '@material-ui/core/LinearProgress'
 const formFields = [
   {
     name: 'email',
@@ -59,11 +60,7 @@ const styles = (theme) => ({
     textAlign: 'center',
     marginTop: '1rem',
     backgroundColor: '#FFCCBA',
-    padding: '5px',
-
-    '& > * + *': {
-      marginTop: theme.spacing(2)
-    }
+    padding: '5px'
   }
 })
 
@@ -71,7 +68,8 @@ class ResetPassword extends Component {
   constructor() {
     super()
     this.state = {
-      error: ''
+      error: '',
+      submit: false
     }
   }
   componentDidMount() {
@@ -90,9 +88,10 @@ class ResetPassword extends Component {
   }
 
   handelFormSubmit = (value, FORM_ERROR) => {
+    this.setState({ submit: true })
     const { email, newPassword } = value
     const setErrorState = () =>
-      this.setState({ error: 'Incorrect UserId or Password' }) // backend error
+      this.setState({ error: 'Incorrect UserId or Password' })
 
     let { users } = this.props
 
@@ -127,13 +126,17 @@ class ResetPassword extends Component {
             previousPassword: updatedUserPassword.previousPassword
           })
           .then((resp) => {
+            this.setState({ submit: false })
             updateUserList(resp.data)
             routerPush({
               pathname: '/success',
               state: { mailId: updatedUserPassword.email }
             })
           })
-          .catch((error) => console.log('Filed to update data ', error))
+          .catch((error) => {
+            this.setState({ submit: false })
+            console.log('Filed to update data ', error)
+          })
       }
     } else {
       setErrorState()
@@ -142,36 +145,47 @@ class ResetPassword extends Component {
 
   render() {
     const { classes } = this.props
+
     return (
-      <Grid container className={classes.root}>
-        <Grid
-          className={classes.formWrapper}
-          item
-          xs={12}
-          md={5}
-          component={Paper}
-          square
-        >
-          <div className={classes.formConatiner}>
-            <Typography component="h1" variant="h5" align="center">
-              Reset Your password
-            </Typography>
-            {this.state.error && (
-              <div className={classes.errorBlock}>{this.state.error}</div>
-            )}
-            <ResetFormCMS
-              handelSubmit={this.handelFormSubmit}
-              renderformFields={formFields}
-            />
-          </div>
+      <main>
+        {this.state.submit && <LinearProgress style={{ color: '#3F51B5' }} />}
+        <Grid container className={classes.root}>
+          <Grid
+            className={classes.formWrapper}
+            item
+            xs={12}
+            md={5}
+            component={Paper}
+            square
+          >
+            <div className={classes.formConatiner}>
+              <Typography component="h1" variant="h5" align="center">
+                Reset Your password
+              </Typography>
+              {this.state.error && (
+                <div className={classes.errorBlock}>{this.state.error}</div>
+              )}
+              <ResetFormCMS
+                handelSubmit={this.handelFormSubmit}
+                renderformFields={formFields}
+              />
+            </div>
+          </Grid>
+          <Grid
+            item
+            xs={false}
+            md={7}
+            className={classes.image}
+            elevation={6}
+          />
         </Grid>
-        <Grid item xs={false} md={7} className={classes.image} elevation={6} />
-      </Grid>
+      </main>
     )
   }
 }
 ResetPassword.propTypes = {
   error: propTypes.string,
+  submit: propTypes.bool,
   push: propTypes.func.isRequired,
   addUsersToRedux: propTypes.func.isRequired
 }

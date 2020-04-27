@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router'
 import configureStore, { makeHistory } from 'store'
 import * as serviceWorker from 'serviceWorker'
 import ResetPassword from 'ui/container/resetPassword'
+import SuccessPage from 'ui/organisms/successPage'
 
 const store = configureStore()
 
@@ -17,10 +18,7 @@ const App = () => (
       <ConnectedRouter history={makeHistory}>
         <Switch>
           <Route exact path="/" render={() => <ResetPassword />} />
-          <Route
-            path="/success"
-            render={() => <div> Successfully in resetting password</div>}
-          />
+          <Route path="/success" render={() => <SuccessPage />} />
         </Switch>
       </ConnectedRouter>
     </Provider>

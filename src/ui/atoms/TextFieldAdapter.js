@@ -3,15 +3,14 @@ import { TextField } from '@material-ui/core'
 import { maxCharTextField } from 'const/ElementsFixedValue'
 
 const TextFieldAdapter = ({ input, type, maxLength, meta, ...rest }) => {
-  // console.log('error   : : :, meta.error', meta.error)
+  const hasError = meta?.error || {}
   return (
     <TextField
       {...input}
       {...rest}
       type={input.type || 'text'}
       onChange={(value) => input.onChange(value)}
-      error={Boolean(meta.touched && meta.error)}
-      helperText={meta.touched && meta.error ? meta.error : ''}
+      error={Boolean(meta.touched && Object.keys(hasError).length)}
       inputProps={{ maxLength: maxLength || maxCharTextField }}
     />
   )

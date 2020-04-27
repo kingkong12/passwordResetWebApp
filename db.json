@@ -1,13 +1,15 @@
 {
   "users": [
     {
-      "id": 1,
       "email": "abc@gmail.com",
-      "password": "abc#123abc",
+      "password": "dnsdnsk1#",
       "previousPassword": [
-        "jhonDoe@12",
-        "iLoveMusic123@"
-      ]
+        "anjndcja123#",
+        "abc@1rtu",
+        "abc#123abc",
+        "jhonDoe@12"
+      ],
+      "id": 1
     },
     {
       "id": 2,
