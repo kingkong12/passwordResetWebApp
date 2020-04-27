@@ -11,6 +11,7 @@ import { push } from 'connected-react-router'
 import { Typography } from '@material-ui/core'
 import { maxCharPassword } from 'const/ElementsFixedValue'
 import StyledLinearProgress from 'ui/atoms/LineProgress'
+import FallBackUi from 'ui/organisms/fallBackUi'
 
 const formFields = [
   {
@@ -69,6 +70,7 @@ class ResetPassword extends Component {
     super()
     this.state = {
       error: '',
+      dispalyfallbackUi: false,
       submit: false
     }
   }
@@ -83,7 +85,8 @@ class ResetPassword extends Component {
         addUsersToRedux(response.data)
       })
       .catch((error) => {
-        console.log('Error in connectin back end ', error)
+        this.setState({ dispalyfallbackUi: true })
+        console.log('Failed to connect ot remote server ', error)
       })
   }
 
@@ -158,18 +161,22 @@ class ResetPassword extends Component {
             component={Paper}
             square
           >
-            <div className={classes.formConatiner}>
-              <Typography component="h1" variant="h5" align="center">
-                Reset Your password
-              </Typography>
-              {this.state.error && (
-                <div className={classes.errorBlock}>{this.state.error}</div>
-              )}
-              <ResetFormCMS
-                handelSubmit={this.handelFormSubmit}
-                renderformFields={formFields}
-              />
-            </div>
+            {this.state.dispalyfallbackUi ? (
+              <FallBackUi onClick={() => this.forceUpdate()} />
+            ) : (
+              <div className={classes.formConatiner}>
+                <Typography component="h1" variant="h5" align="center">
+                  Reset Your password
+                </Typography>
+                {this.state.error && (
+                  <div className={classes.errorBlock}>{this.state.error}</div>
+                )}
+                <ResetFormCMS
+                  handelSubmit={this.handelFormSubmit}
+                  renderformFields={formFields}
+                />
+              </div>
+            )}
           </Grid>
           <Grid
             item
