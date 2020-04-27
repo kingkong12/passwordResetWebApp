@@ -162,7 +162,7 @@ class ResetPassword extends Component {
             square
           >
             {this.state.dispalyfallbackUi ? (
-              <FallBackUi onClick={() => this.forceUpdate()} />
+              <FallBackUi />
             ) : (
               <div className={classes.formConatiner}>
                 <Typography component="h1" variant="h5" align="center">
