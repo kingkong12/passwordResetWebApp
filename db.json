@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "email": "abc@gmail.com",
+      "password": "newPassword@1",
+      "previousPassword": [
+        "dnsdnsk1#",
+        "anjndcja123#",
+        "abc@1rtu",
+        "abc#123abc"
+      ],
+      "id": 1
+    },
+    {
+      "id": 2,
+      "email": "def@gmail.com",
+      "password": "abc#123abc",
+      "previousPassword": []
+    },
+    {
+      "email": "ghi@gmail.com",
+      "password": "newPassword@12",
+      "previousPassword": [
+        "abc#123abcrat",
+        "abc#123abc",
+        "jhonnyDoe@12",
+        "iLoveDancing123@"
+      ],
+      "id": 3
+    }
+  ]
+}

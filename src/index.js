@@ -1,26 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { CssBaseline } from '@material-ui/core'
 import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
 import configureStore, { makeHistory } from 'store'
 import * as serviceWorker from 'serviceWorker'
+import ResetPassword from 'ui/container/resetPassword'
+import SuccessPage from 'ui/organisms/successPage'
 
 const store = configureStore()
 
 const App = () => (
-  <Provider store={store}>
-    <ConnectedRouter history={makeHistory}>
-      {/* place ConnectedRouter under Provider */}
-
-      {/* this is a good place to have fixed footers/heasders */}
-      <Switch>
-        {/* Renders the first child <Route> or <Redirect> that matches the location. */}
-        <Route exact path="/" render={() => <div>Hit </div>} />
-        <Route path="/details" render={() => <div> Miss</div>} />
-      </Switch>
-    </ConnectedRouter>
-  </Provider>
+  <>
+    <CssBaseline />
+    <Provider store={store}>
+      <ConnectedRouter history={makeHistory}>
+        <Switch>
+          <Route exact path="/" render={() => <ResetPassword />} />
+          <Route path="/success" render={() => <SuccessPage />} />
+        </Switch>
+      </ConnectedRouter>
+    </Provider>
+  </>
 )
 
 const root = document.getElementById('root')
