@@ -11,7 +11,7 @@ import { push } from 'connected-react-router'
 import { Typography } from '@material-ui/core'
 import { maxCharPassword } from 'const/ElementsFixedValue'
 import StyledLinearProgress from 'ui/atoms/LineProgress'
-import LinearProgress from '@material-ui/core/LinearProgress'
+
 const formFields = [
   {
     name: 'email',
@@ -108,7 +108,7 @@ class ResetPassword extends Component {
         )
       ) {
         this.setState({
-          error: 'newPassword cannot be same as last 5 password'
+          error: 'New Password cannot be same as last 5 password'
         })
       } else {
         let { previousPassword } = foundUser
@@ -148,7 +148,7 @@ class ResetPassword extends Component {
 
     return (
       <main>
-        {this.state.submit && <LinearProgress style={{ color: '#3F51B5' }} />}
+        {this.state.submit && <StyledLinearProgress />}
         <Grid container className={classes.root}>
           <Grid
             className={classes.formWrapper}

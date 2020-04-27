@@ -66,7 +66,6 @@ const ResetFormCMS = ({
           ...props
         }) => (
           <form onSubmit={handleSubmit}>
-            {console.log('props', props)}
             {renderformFields.map((item) => (
               <Field
                 {...item}

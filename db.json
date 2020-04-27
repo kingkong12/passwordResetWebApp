@@ -2,12 +2,12 @@
   "users": [
     {
       "email": "abc@gmail.com",
-      "password": "dnsdnsk1#",
+      "password": "newPassword@1",
       "previousPassword": [
+        "dnsdnsk1#",
         "anjndcja123#",
         "abc@1rtu",
-        "abc#123abc",
-        "jhonDoe@12"
+        "abc#123abc"
       ],
       "id": 1
     },
@@ -19,12 +19,12 @@
     },
     {
       "email": "ghi@gmail.com",
-      "password": "abc#123abcrat",
+      "password": "newPassword@12",
       "previousPassword": [
+        "abc#123abcrat",
         "abc#123abc",
         "jhonnyDoe@12",
-        "iLoveDancing123@",
-        "king@12ud"
+        "iLoveDancing123@"
       ],
       "id": 3
     }
