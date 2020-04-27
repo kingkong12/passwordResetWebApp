@@ -1,43 +1,77 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## reset validadtion rules
+# Table of Contents
 
-add validation rules from quetion
+1. [Problem Statement](#Problem Statement)
+2. [Getting Started](#Running on Localhost)
 
-## Read md docs
+## Problem Statement
 
-    add something about apssword validation
+The flow:​
+
+- Create a page that takes some form of user identifier (email/phone) and new password.
+- Ensure the password meets our requirements.
+- Update the user password in the database leveraging the API.
+- If successful let the user be notified.
+- If the password doesn’t meet our requirements, please let the user know what they can change.
+
+Password requirements:
+
+- Min: 1 lowercase and 1 uppercase alphabet
+- Min: 1 number
+- Min: 1 special character
+- 8-16 character length
+- Shouldn’t be the same as username
+- Shouldn’t be the same as last password
 
 ## Running on Localhost
 
-npm start
+You'll need to have `node` installed to build and run the front-end:
 
-## Media queries
+1. npm install
 
-following were the pixeles selected to make App responsive :440px,768px, 320px.
+2. npm run server
 
-## API used in project
+3. npm start
+
+# Redux
+
+Redux is a predictable state container for JavaScript apps. Redux is used together with react library.
 
 ### HTTP Requests
 
 Used [Axios](https://github.com/axios/axios) for making all HTTP requests. It is a well documented, promise based library that is widely accepted.
 
-## Styled Components
+### Materil Ui
 
-Styled components gives us a way to, you guessed it, style our components. Here are some of the benefits:
+Material-UI came about from our love of React and Google's Material Design.
 
-#### They're just React components
+Some of the benifits.
 
-It allows us to stay aligned with a component driven development workflow, minimizing deeply nested `div` tags with no meaning, increasing reusability, and keeping styles close to their UI that they manipulate (easier to maintain). Check out [Getting Started](https://www.styled-components.com/docs/basics#getting-started).
+- Components work in isolation
+  Material-UI components are self-supporting, and will only inject the styles they need to display. They don't rely on any global style-sheets such as normalize.css!
 
-#### Write CSS like normal
+- Consistent appearance
+  Aesthetic preferences for Material Design aside, your web project has a high chance of retaining similarity in appearance and functions all throughout.
 
-Write regular CSS, with automatic vendor prefixing, plus the added benefit of being able to pass variables (props) as you would with regular components. See how to pass props [here](https://www.styled-components.com/docs/basics#getting-started)
+- React Components
+  135 More components
+  50 Better customization
+  36 Better documentation
+  31 TypeScript
+  24 Performance
+  19 Bundle size
+  17 Material Design Update
+  16 styled-components
+  14 Fewer breaking changes
+  10 More page layout examples
+  and more
 
-#### Reusable themes and global styles
+### JSON server
 
-Use a Theme Provider to pass style themes to all your nested components. You can even make Sub Themes that can override parent themes. We can also replace our index.css file with the more flexible `createGlobalStyles`. Learn more about [themes here](https://www.styled-components.com/docs/advanced#theming) and [creteGlobalStyles here](https://www.styled-components.com/docs/api#createglobalstyle)
+Get a full fake REST API with zero coding in less than 30 seconds. JSON Server is a Node Module that you can use to create demo rest json webservice in less than a minute. All you need is a JSON file for sample data.
 
-## Available Scripts
+how can you run
 
-npm run eslint-check. It helps to verify any inconsistemt eslint rules with Prettier.
+- npm run server  
+   to test type `http://localhost:4000/users` in your browser
